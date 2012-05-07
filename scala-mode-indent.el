@@ -187,11 +187,9 @@ not move."
     (save-excursion (indent-line-to column))))
 
 (defun scala-indent-line ()
-  "Indent current line as smartly as possible.
-When called repeatedly, indent each time one stop further on the right."
+  "Indent current line as smartly as possible."
   (interactive)
-  (if (or (eq last-command this-command)
-          (eq last-command 'scala-undent-line))
+  (if (eq last-command 'scala-undent-line)
       (scala-indent-line-to (+ (current-indentation) scala-mode-indent:step))
     (let 
 	((indentation (scala-indentation)))
